@@ -58,4 +58,3 @@ timezone: Asia/Kolkata
 collections:
   go:
     output: true
-    permalink: /go/:name/
