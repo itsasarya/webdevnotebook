@@ -23,7 +23,7 @@ func main() {
 	var e int           // uninitialized variable
 
 	fmt.Println(a)    // outputs : 1
-	fmt.Println(b)    // outputs : ba
+	fmt.Println(b)    // outputs : b
 	fmt.Println(c, d) // outputs : 3 4
 	fmt.Println(e)    // outputs : 0
 }
@@ -31,9 +31,9 @@ func main() {
 
 # `const` Keyword
 
-- Used to defined constants.
-- Must be assinged value at the time of declaration.
-- Can't use `Shortand syntax :=`
+- Is used to define constants.
+- Must be assigned value at the time of declaration.
+- Can't use `Shorthand syntax :=`
 
 ```go
 
@@ -47,7 +47,6 @@ const (
     c = "hello"
     d             // d = "hello"
 )
-``
 ```
 
 ## Iota
@@ -62,8 +61,8 @@ package main
 
 const (
     Monday = iota
-    tuesday
-    wednesday
+    Tuesday
+    Wednesday
 )
 
 func main() {
@@ -73,5 +72,63 @@ func main() {
 
 # Scope and Shadowing
 
-> - Scope determines the variable accessiblity form universe to block level.
-> - Shadowing occurs when inner variables hide outside ones with same names.
+Variable scope in Go determines where a variable is accessible and for how long it exists in memory. Go defines three types of variable scope: block scope, package scope, and global scope.
+
+#### 1. Block Scope
+
+- Variables declared within a function, loop (like `for` loops), or conditional statement (like `if` statements) are said to have block scope.
+- These variables are only accessible within the specific block (and any blocks nested within it) where they are declared.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    x := 10 // x is local to main()
+
+    if true {
+        y := 20 // y is local to the if block
+        fmt.Println(y) // Accessible here
+    }
+
+    // fmt.Println(y) // ERROR: y is out of scope here
+    fmt.Println(x) // Accessible here
+}
+```
+
+#### Package Scope
+
+- Variable which are accessible in every part of the package.
+- Can't use shorthand declaration in package scope
+
+```go
+package main
+
+import "fmt"
+
+var num = 10
+
+func main() {
+	fmt.Println(num)
+}
+
+```
+
+#### Global Scope
+
+- These are package variables which can span there reach out of the package.
+- To export a variable you have to capitalize it
+
+```go
+package main
+
+import "fmt"
+
+var SomeVar string = "hello" //global variable
+
+func main(){
+    fmt.Println("%d, world", SomeVar)
+}
+
+```
