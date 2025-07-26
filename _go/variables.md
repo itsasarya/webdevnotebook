@@ -130,5 +130,4 @@ var SomeVar string = "hello" //global variable
 func main(){
     fmt.Println("%d, world", SomeVar)
 }
-
 ```
