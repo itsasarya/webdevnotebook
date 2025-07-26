@@ -58,3 +58,20 @@ timezone: Asia/Kolkata
 collections:
   go:
     output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Ayush Arya"
+      categories: "blog"
+
+  - scope:
+      path: "notes" # applies to all files inside /notes/
+      type: "pages"
+    values:
+      layout: "note"
+      author: "Ayush Arya"
+      categories: "notes"
