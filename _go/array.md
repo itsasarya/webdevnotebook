@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Array
+title: Array & Slice
 ---
 
 A collection of elements of the same type with a fixed size stored in contiguous memory locations.
@@ -69,4 +69,65 @@ func main() {
     println(len(arr)) // outputs: 5
     println(len(arr2)) // outputs: 9
 }
+```
+
+# Slice
+
+A **slice** is a flexible, dynamically-sized view into the elements of an array.  
+Unlike arrays, slices **do not have a fixed size** and can grow or shrink as needed.
+
+> A slice does not store data itself — it’s a reference to a segment of an underlying array.
+
+---
+
+## Declaring a Slice
+
+```go
+var sliceName []dataType                // nil slice
+sliceName := []dataType{values}         // with values
+sliceName = make([]dataType, length)    // length with zero values
+sliceName = make([]dataType, length, cap) // length and capacity
+```
+
+**Creating a Slice from an Array**
+
+```go
+arr := [5]int{1, 2, 3, 4, 5}
+slice := arr[1:4] // from index 1 to 3 (excludes index 4)
+```
+
+**Length and Capacity**
+
+```go
+fmt.Println(len(slice)) // number of elements in slice
+fmt.Println(cap(slice)) // number of elements from start index to end of underlying array
+```
+
+## Common Operation
+
+**Append Elements**
+
+```go
+slice = append(slice, 6, 7, 8)
+```
+
+**Copy Slices**
+
+```go
+dst := make([]int, len(slice))
+copy(dst, slice)
+```
+
+**Delete Element**
+
+```go
+// remove element at index i
+slice = append(slice[:i], slice[i+1:]...)
+```
+
+**Insert Element**
+
+```go
+// insert value x at index i
+slice = append(slice[:i], append([]T{x}, slice[i:]...)...)
 ```
